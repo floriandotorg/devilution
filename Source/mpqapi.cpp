@@ -85,7 +85,7 @@ bool __fastcall mpqapi_reg_load_modification_time(char *dst, int size)
 	v2 = size;
 	v3 = dst;
 	memset(dst, 0, size);
-	if ( !SRegLoadData("Diablo", "Video Player ", 0, (unsigned char *)v3, v2, (unsigned long *)&nbytes_read) || nbytes_read != v2 )
+	if ( !SRegLoadData("Diablo", "Video Player ", 0, (unsigned char *)v3, v2, reinterpret_cast<LPDWORD>((unsigned long *)&nbytes_read)) || nbytes_read != v2 )
 		return 0;
 	if ( v2 >= 8 )
 	{

@@ -52,7 +52,7 @@ void __fastcall snd_update(bool bStopAll)
 	do
 	{
 		v3 = DSBs[v2];
-		if ( v3 && (v1 || v3->GetStatus(&v4) || v4 != DSBSTATUS_PLAYING) ) // FIX_ME: double check
+		if ( v3 && (v1 || v3->GetStatus(reinterpret_cast<LPDWORD>(&v4)) || v4 != DSBSTATUS_PLAYING) ) // FIX_ME: double check
 		{
 			DSBs[v2]->Stop();
 			DSBs[v2]->Release();
@@ -84,7 +84,7 @@ bool __fastcall snd_playing(TSnd *pSnd)
 	v3 = (unsigned long)pSnd;
 	if ( pSnd
 	  && (v1 = pSnd->DSB) != 0
-	  && !v1->GetStatus(&v3) )
+	  && !v1->GetStatus(reinterpret_cast<LPDWORD>(&v3)) )
 	{
 		result = v3 == DSBSTATUS_PLAYING;
 	}
@@ -202,7 +202,7 @@ bool __fastcall sound_file_reload(TSnd *sound_file, IDirectSoundBuffer *DSB)
 	v8 = 0;
 	WOpenFile(v5, &a1, 0);
 	WSetFilePointer(a1, v3->offset, 0, 0);
-	if ( !v2->Lock(0, v3->len, &aptr1, &asize1, &aptr2, &asize2, 0) )
+	if ( !v2->Lock(0, v3->len, &aptr1, reinterpret_cast<LPDWORD>(&asize1), &aptr2, reinterpret_cast<LPDWORD>(&asize2), 0) )
 	{
 		WReadFile(a1, (char *)aptr1, asize1);
 		if ( !v2->Unlock(aptr1, asize1, aptr2, asize2) )
@@ -240,7 +240,7 @@ TSnd *__fastcall sound_file_load(char *path)
 	if ( !ptr )
 		TermMsg("Invalid sound format on file %s", v4->sound_path);
 	sound_CreateSoundBuffer(v4);
-	v5 = v4->DSB->Lock(0, v4->len, &aptr1, &asize1, &aptr2, &asize2, 0); //v7);
+	v5 = v4->DSB->Lock(0, v4->len, &aptr1, reinterpret_cast<LPDWORD>(&asize1), &aptr2, reinterpret_cast<LPDWORD>(&asize2), 0); //v7);
 	if ( v5 )
 		DSErrDlg(v5, 318, "C:\\Src\\Diablo\\Source\\SOUND.CPP");
 	memcpy(aptr1, (char *)ptr + v4->offset, asize1);

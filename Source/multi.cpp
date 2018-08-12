@@ -920,7 +920,7 @@ void __fastcall multi_send_pinfo(int pnum, TCmdPlrInfoHdr *cmd)
 	int v4; // edx
 	PkPlayerStruct pkplr; // [esp+8h] [ebp-4F4h]
 
-	v2 = (char)cmd;
+	v2 = static_cast<char>(reinterpret_cast<int>(cmd));
 	v3 = pnum;
 	PackPlayer(&pkplr, myplr, 1);
 	_LOBYTE(v4) = v2;
@@ -1069,7 +1069,7 @@ int __fastcall multi_upgrade(int *a1)
 	int status; // [esp+4h] [ebp-4h]
 
 	v1 = a1;
-	SNetPerformUpgrade((unsigned long *)&status);
+	SNetPerformUpgrade(reinterpret_cast<DWORD*>((unsigned long *)&status));
 	result = 1;
 	if ( status && status != 1 )
 	{

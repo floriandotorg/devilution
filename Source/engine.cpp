@@ -298,7 +298,7 @@ void __fastcall CelDecDatLightTrans(char *pDecodeTo, char *pRLEBytes, int frame_
 		v4 = pRLEBytes;
 		v5 = (int)pDecodeTo;
 		v6 = &pRLEBytes[frame_content_size];
-		v28 = (unsigned char)pDecodeTo & 1;
+		v28 = static_cast<unsigned char>(reinterpret_cast<int>(pDecodeTo)) & 1;
 		do
 		{
 			v7 = frame_width;
@@ -884,7 +884,7 @@ void __fastcall Cel2DecDatLightTrans(char *pDecodeTo, char *pRLEBytes, int frame
 		v4 = pRLEBytes;
 		v5 = (unsigned int)pDecodeTo;
 		v6 = &pRLEBytes[frame_content_size];
-		v28 = (unsigned char)pDecodeTo & 1;
+		v28 = static_cast<unsigned char>(reinterpret_cast<int>(pDecodeTo)) & 1;
 		do
 		{
 			v7 = frame_width;

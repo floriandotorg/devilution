@@ -158,7 +158,7 @@ void __fastcall run_game_loop(int uMsg)
 
 	nthread_ignore_mutex(1);
 	start_game(uMsg);
-	saveProc = SetWindowProc(GM_Game);
+	saveProc = SetWindowProc((void*)GM_Game);
 	control_update_life_mana();
 	msg_process_net_packets();
 	gbRunGame = 1;
@@ -217,7 +217,7 @@ void __fastcall run_game_loop(int uMsg)
 	ClearScreenBuffer();
 	drawpanflag = 255;
 	scrollrt_draw_game_screen(1);
-	SetWindowProc(saveProc);
+	SetWindowProc((void*)saveProc);
 	free_game();
 	if ( cineflag )
 	{
@@ -574,7 +574,7 @@ void __fastcall diablo_reload_process(HMODULE hModule)
 				CloseHandle(hMap);
 				ExitProcess(0);
 			}
-			if ( InterlockedIncrement((long *)v4) )
+			if ( InterlockedIncrement((volatile LONG *)v4) )
 			{
 				v6 = GetForegroundWindow();
 				do

@@ -5,7 +5,7 @@
 bool __cdecl SystemSupported()
 {
 	bool v0; // di
-	struct _OSVERSIONINFOA VersionInformation; // [esp+4h] [ebp-94h]
+	OSVERSIONINFOA VersionInformation; // [esp+4h] [ebp-94h]
 
 	v0 = 0;
 	memset(&VersionInformation, 0, 0x94u);

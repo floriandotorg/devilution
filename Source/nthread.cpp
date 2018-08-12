@@ -139,7 +139,7 @@ int __fastcall nthread_recv_turns(int *pfSendAsync)
 	sgbPacketCountdown = byte_679704;
 	if ( !v2 )
 		goto LABEL_11;
-	if ( SNetReceiveTurns(0, 4, (char **)glpMsgTbl, (unsigned int *)gdwMsgLenTbl, (unsigned long *)player_state) )
+	if ( SNetReceiveTurns(0, 4, (char **)glpMsgTbl, (unsigned int *)gdwMsgLenTbl, reinterpret_cast<DWORD*>((unsigned long *)player_state)) )
 	{
 		if ( !byte_679758 )
 		{

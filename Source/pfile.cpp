@@ -445,7 +445,7 @@ bool __fastcall pfile_read_hero(void *archive, PkPlayerStruct *pPack)
 		v5 = (char *)DiabloAllocPtr(dwSize);
 		v6 = v5;
 		//_LOBYTE(v7) = SFileReadFile(file, v5, v4, (unsigned long *)&dwBytes, 0);
-		if ( SFileReadFile(file, v5, v4, (unsigned long *)&dwBytes, 0) )
+		if ( SFileReadFile(file, v5, v4, reinterpret_cast<DWORD*>((unsigned long *)&dwBytes), 0) )
 		{
 			dwBytes = codec_decode(v6, v4, password);
 			if ( dwBytes )
@@ -456,7 +456,7 @@ bool __fastcall pfile_read_hero(void *archive, PkPlayerStruct *pPack)
 				if ( !SFileSetFilePointer(file, 0, 0, 0) )
 				{
 					//_LOBYTE(v8) = SFileReadFile(file, v6, v4, (unsigned long *)&dwBytes, 0);
-					if ( SFileReadFile(file, v6, v4, (unsigned long *)&dwBytes, 0) )
+					if ( SFileReadFile(file, v6, v4, reinterpret_cast<DWORD*>((unsigned long *)&dwBytes), 0) )
 					{
 						dwBytes = codec_decode(v6, v4, password);
 LABEL_11:
@@ -871,7 +871,7 @@ char *__fastcall pfile_read(char *pszName, int *pdwLen)
 	v7 = DiabloAllocPtr(*v2);
 	src_dst = v7;
 	//_LOBYTE(v8) = SFileReadFile(file, (char *)v7, *v2, (unsigned long *)&nread, 0);
-	if ( !SFileReadFile(file, (char *)v7, *v2, (unsigned long *)&nread, 0) )
+	if ( !SFileReadFile(file, (char *)v7, *v2, reinterpret_cast<DWORD*>((unsigned long *)&nread), 0) )
 		TermMsg("Unable to read save file");
 	SFileCloseFile(file);
 	pfile_SFileCloseArchive(v4);
@@ -893,7 +893,7 @@ char *__fastcall pfile_read(char *pszName, int *pdwLen)
 			if ( SFileSetFilePointer(file, 0, 0, 0) )
 				TermMsg("Unable to read save file");
 			//_LOBYTE(v11) = SFileReadFile(file, v9, *v2, (unsigned long *)&nread, 0);
-			if ( !SFileReadFile(file, v9, *v2, (unsigned long *)&nread, 0) )
+			if ( !SFileReadFile(file, v9, *v2, reinterpret_cast<DWORD*>((unsigned long *)&nread), 0) )
 				TermMsg("Unable to read save file");
 			*v2 = codec_decode(v9, *v2, password);
 		}

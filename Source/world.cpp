@@ -139,7 +139,7 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 				switch ( cel_type_16 )
 				{
 					case 1:
-						WorldBoolFlag = (unsigned char)pbDst & 1;
+						WorldBoolFlag = static_cast<unsigned char>(reinterpret_cast<int>(pbDst)) & 1;
 						xx_32 = 32;
 						do
 						{
@@ -160,7 +160,7 @@ void __fastcall drawTopArchesUpperScreen(unsigned char *pbDst)
 								l_index = yy_32 - dung_and80;
 								if ( (unsigned int)tmp_pbDst < screen_buf_end )
 									return;
-								if ( ((unsigned char)tmp_pbDst & 1) == WorldBoolFlag )
+								if ( (static_cast<unsigned char>(reinterpret_cast<int>(tmp_pbDst)) & 1) == WorldBoolFlag )
 								{
 									y32_temp = l_index;
 									chk_sh_and = dung_and80 >> 1;
@@ -648,7 +648,7 @@ LABEL_67:
 										while ( n_draw_shift );
 									}
 								}
-								l_index = (unsigned char)pdung_cels & 2;
+								l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 								pdung_cels += l_index;
 							}
 							else
@@ -712,7 +712,7 @@ LABEL_67:
 										while ( n_draw_shift );
 									}
 								}
-								l_index = (unsigned char)pdung_cels & 2;
+								l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 								pdung_cels += l_index;
 							}
 							tmp_pbDst = &tmp_pbDst[xx_32 - 800];
@@ -788,7 +788,7 @@ LABEL_67:
 												while ( n_draw_shift );
 											}
 										}
-										l_index = (unsigned char)pdung_cels & 2;
+										l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 										pdung_cels += l_index;
 									}
 									else
@@ -852,7 +852,7 @@ LABEL_67:
 												while ( n_draw_shift );
 											}
 										}
-										l_index = (unsigned char)pdung_cels & 2;
+										l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 										pdung_cels += l_index;
 									}
 									tmp_pbDst = &tmp_pbDst[yy_32 - 800];
@@ -1115,7 +1115,7 @@ LABEL_67:
 										while ( n_draw_shift );
 									}
 								}
-								l_index = (unsigned char)pdung_cels & 2;
+								l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 								pdung_cels += l_index;
 							}
 							else
@@ -1179,7 +1179,7 @@ LABEL_67:
 										while ( n_draw_shift );
 									}
 								}
-								l_index = (unsigned char)pdung_cels & 2;
+								l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 								pdung_cels += l_index;
 							}
 							tmp_pbDst = &tmp_pbDst[xx_32 - 800];
@@ -1784,7 +1784,7 @@ LABEL_11:
 			}
 			return;
 		}
-		WorldBoolFlag = (unsigned char)pbDst & 1;
+		WorldBoolFlag = static_cast<unsigned char>(reinterpret_cast<int>(pbDst)) & 1;
 		junk_v134 = 32;
 LABEL_251:
 		xx_32 = 32;
@@ -1811,7 +1811,7 @@ LABEL_271:
 			xx_32 -= dung_and80;
 			if ( (unsigned int)tmp_pbDst < screen_buf_end )
 				return;
-			if ( ((unsigned char)tmp_pbDst & 1) == WorldBoolFlag )
+			if ( (static_cast<unsigned char>(reinterpret_cast<int>(tmp_pbDst)) & 1) == WorldBoolFlag )
 			{
 				chk_sh_and = dung_and80 >> 1;
 				if ( !(dung_and80 & 1) )
@@ -1928,7 +1928,7 @@ LABEL_268:
 	switch ( (_WORD)cel_type_32 )
 	{
 		case 1:
-			WorldBoolFlag = (unsigned char)pbDst & 1;
+			WorldBoolFlag = static_cast<unsigned char>(reinterpret_cast<int>(pbDst)) & 1;
 			xx_32 = 32;
 			while ( 1 )
 			{
@@ -1944,7 +1944,7 @@ LABEL_268:
 						if ( (unsigned int)tmp_pbDst < screen_buf_end )
 							return;
 						pdung_cels += dung_and80;
-						if ( ((unsigned char)tmp_pbDst & 1) == WorldBoolFlag )
+						if ( (static_cast<unsigned char>(reinterpret_cast<int>(tmp_pbDst)) & 1) == WorldBoolFlag )
 						{
 							chk_sh_and = dung_and80 >> 1;
 							if ( !(dung_and80 & 1) )
@@ -2674,7 +2674,7 @@ LABEL_129:
 								--i;
 							}
 							while ( i );
-							pdung_cels += (unsigned char)pdung_cels & 2;
+							pdung_cels += static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 							tmp_pbDst -= 800;
 							--gpDrawMask;
 							yy_32 = y32_temp - 1;
@@ -2985,7 +2985,7 @@ LABEL_270:
 									y32_temp = yy_32;
 									left_shift = *gpDrawMask;
 									i = 32;
-									pdung_cels += (unsigned char)pdung_cels & 2;
+									pdung_cels += static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 									do
 									{
 										_EAX = *pdung_cels++;
@@ -3065,7 +3065,7 @@ LABEL_270:
 										--i;
 									}
 									while ( i );
-									pdung_cels += (unsigned char)pdung_cels & 2;
+									pdung_cels += static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 									tmp_pbDst -= 800;
 									--gpDrawMask;
 									yy_32 = y32_temp - 1;
@@ -3931,7 +3931,7 @@ LABEL_58:
 								pdung_cels += 2;
 								tmp_pbDst += 2;
 							}
-							l_index = (unsigned char)pdung_cels & 2;
+							l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 							pdung_cels += l_index;
 							tmp_pbDst = &tmp_pbDst[xx_32 - 800];
 							ofsub_only = __OFSUB__(xx_32, 2);
@@ -3970,7 +3970,7 @@ LABEL_58:
 										pdung_cels += 2;
 										tmp_pbDst += 2;
 									}
-									l_index = (unsigned char)pdung_cels & 2;
+									l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 									pdung_cels += l_index;
 									tmp_pbDst = &tmp_pbDst[yy_32 - 800];
 									yy_32 += 2;
@@ -4090,7 +4090,7 @@ LABEL_58:
 								pdung_cels += 2;
 								tmp_pbDst += 2;
 							}
-							l_index = (unsigned char)pdung_cels & 2;
+							l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 							pdung_cels += l_index;
 							tmp_pbDst = &tmp_pbDst[xx_32 - 800];
 							ofsub_only = __OFSUB__(xx_32, 2);
@@ -4948,7 +4948,7 @@ void __fastcall drawTopArchesLowerScreen(unsigned char *pbDst)
 			}
 			return;
 		}
-		WorldBoolFlag = (unsigned char)pbDst & 1;
+		WorldBoolFlag = static_cast<unsigned char>(reinterpret_cast<int>(pbDst)) & 1;
 		xx_32 = 32;
 LABEL_412:
 		x32_temp = xx_32;
@@ -4978,7 +4978,7 @@ LABEL_433:
 			if ( (unsigned int)tmp_pbDst < screen_buf_end )
 			{
 				pdung_cels += dung_and80;
-				if ( ((unsigned char)tmp_pbDst & 1) == WorldBoolFlag )
+				if ( (static_cast<unsigned char>(reinterpret_cast<int>(tmp_pbDst)) & 1) == WorldBoolFlag )
 				{
 					chk_sh_and = dung_and80 >> 1;
 					if ( !(dung_and80 & 1) )
@@ -5101,7 +5101,7 @@ LABEL_430:
 		}
 		if ( cel_type_16 == 1 )
 		{
-			WorldBoolFlag = (unsigned char)pbDst & 1;
+			WorldBoolFlag = static_cast<unsigned char>(reinterpret_cast<int>(pbDst)) & 1;
 			xx_32 = 32;
 			do
 			{
@@ -5123,7 +5123,7 @@ LABEL_430:
 					yy_32 -= dung_and80;
 					if ( (unsigned int)tmp_pbDst < screen_buf_end )
 					{
-						if ( ((unsigned char)tmp_pbDst & 1) == WorldBoolFlag )
+						if ( (static_cast<unsigned char>(reinterpret_cast<int>(tmp_pbDst)) & 1) == WorldBoolFlag )
 						{
 							chk_sh_and = dung_and80 >> 1;
 							if ( dung_and80 & 1 )
@@ -6366,7 +6366,7 @@ LABEL_11:
 			while ( i );
 			return;
 		case 9:
-			WorldBoolFlag = (unsigned char)pbDst & 1;
+			WorldBoolFlag = static_cast<unsigned char>(reinterpret_cast<int>(pbDst)) & 1;
 			xx_32 = 32;
 			while ( 1 )
 			{
@@ -6382,7 +6382,7 @@ LABEL_11:
 						yy_32 -= dung_and80;
 						if ( (unsigned int)tmp_pbDst < screen_buf_end )
 						{
-							if ( ((unsigned char)tmp_pbDst & 1) == WorldBoolFlag )
+							if ( (static_cast<unsigned char>(reinterpret_cast<int>(tmp_pbDst)) & 1) == WorldBoolFlag )
 							{
 								chk_sh_and = dung_and80 >> 1;
 								if ( !(dung_and80 & 1) )
@@ -7542,7 +7542,7 @@ LABEL_117:
 											--i;
 										}
 										while ( i );
-										pdung_cels += (unsigned char)pdung_cels & 2;
+										pdung_cels += static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 										yy_32 = y32_temp;
 									}
 									else
@@ -8099,7 +8099,7 @@ LABEL_217:
 								--i;
 							}
 							while ( i );
-							pdung_cels += (unsigned char)pdung_cels & 2;
+							pdung_cels += static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 							yy_32 = y32_temp;
 						}
 						else
@@ -8857,7 +8857,7 @@ LABEL_116:
 								pdung_cels += 2;
 								tmp_pbDst += 2;
 							}
-							l_index = (unsigned char)pdung_cels & 2;
+							l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 							pdung_cels += l_index;
 							tmp_pbDst = &tmp_pbDst[xx_32 - 800];
 							ofsub_only = __OFSUB__(xx_32, 2);
@@ -8993,7 +8993,7 @@ LABEL_83:
 								--y_minus;
 							}
 							while ( y_minus );
-							l_index = (unsigned char)pdung_cels & 2;
+							l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 							pdung_cels += l_index;
 							tmp_pbDst = &tmp_pbDst[yy_32 - 800];
 							yy_32 += 2;
@@ -9016,7 +9016,7 @@ LABEL_83:
 						--x_minus;
 					}
 					while ( x_minus );
-					l_index = (unsigned char)pdung_cels & 2;
+					l_index = static_cast<unsigned char>(reinterpret_cast<int>(pdung_cels)) & 2;
 					pdung_cels += l_index;
 					tmp_pbDst = &tmp_pbDst[xx_32 - 800];
 					ofsub_only = __OFSUB__(xx_32, 2);

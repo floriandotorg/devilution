@@ -32,7 +32,7 @@ int __fastcall WGetFileSize(HANDLE hsFile, unsigned long *a2)
 	v2 = a2;
 	for ( i = hsFile; ; WGetFileArchive(i, &a2a, 0) )
 	{
-		result = SFileGetFileSize(i, v2);
+		result = SFileGetFileSize(i, reinterpret_cast<LPDWORD>(v2));
 		if ( result )
 			break;
 	}
@@ -98,7 +98,7 @@ char __fastcall WReadFile(HANDLE hsFile, char *buf, int a3)
 	a2a = 0;
 	for ( offset = WSetFilePointer(hsFile, 0, 0, 1); ; WSetFilePointer(v4, offset, 0, 0) )
 	{
-		v5 = SFileReadFile(v4, v3, a3, (unsigned long *)&nread, 0);
+		v5 = SFileReadFile(v4, v3, a3, reinterpret_cast<DWORD*>((unsigned long *)&nread), 0);
 		if ( v5 )
 			break;
 		WGetFileArchive(v4, &a2a, 0);
